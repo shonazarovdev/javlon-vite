@@ -1,0 +1,23 @@
+body {
+    background-color: $bodyBackground;
+    color: $bodyColor;
+    font-family: $secondaryFont;
+    font-size: 17px;
+    line-height: 1.5;
+}
+
+.wrapper {
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    max-width: $maxWidthContainer + px;
+    margin: 0px auto;
+}
+
+[class*='__container'] {
+    max-width: $minWidthContainer + px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}

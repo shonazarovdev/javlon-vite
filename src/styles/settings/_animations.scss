@@ -1,0 +1,50 @@
+.fadeIn {
+    opacity: 1;
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+
+.ellipse {
+    &::after {
+        content: '';
+        transform: scale(0);
+    }
+
+    &._active {
+        &::after {
+            content: '';
+            transform: scale(1);
+            transition: all 0.6s ease-out 0s;
+            position: absolute;
+            top: -6px;
+            left: -15px;
+            width: 36px;
+            height: 37px;
+            background-color: rgba($pink-100, 0.5);
+            backdrop-filter: blur(1px);
+            animation-name: ellipse;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease;
+        }
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ellipse {
+    from {
+        border-radius: 2rem 1.5rem 1rem 1.5rem;
+    }
+    to {
+        border-radius: 5rem 2.5rem 3rem 2.5rem;
+    }
+}
