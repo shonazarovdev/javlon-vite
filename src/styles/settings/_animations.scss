@@ -31,6 +31,13 @@
     }
 }
 
+.arrow-animation {
+    animation-name: arrow-down;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
 @keyframes fade {
     from {
         opacity: 0;
@@ -55,5 +62,16 @@
     }
     100% {
         left: -90%;
+    }
+}
+@keyframes arrow-down {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(7px);
+    }
+    100% {
+        transform: translateY(0);
     }
 }

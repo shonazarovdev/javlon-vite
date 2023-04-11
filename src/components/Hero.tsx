@@ -57,7 +57,9 @@ export const Hero: FC = () => {
                         <div className="mouse-wrapper">
                             <div className="mouse"></div>
                         </div>
-                        <ArrowDown />
+                        <span className="arrow-animation">
+                            <ArrowDown />
+                        </span>
                     </div>
                 </div>
             </div>
