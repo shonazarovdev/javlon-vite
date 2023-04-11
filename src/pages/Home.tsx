@@ -4,7 +4,7 @@ import { menuList, socialList } from '@helpers/data';
 
 export const Home: FC = () => {
     return (
-        <div className="container scroll-container">
+        <div className="container">
             <Header list={menuList} social={socialList} />
             <Hero />
             <About />
