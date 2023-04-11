@@ -1,0 +1,49 @@
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.circle {
+    width: $loaderSize;
+    height: $loaderSize;
+    border-radius: 50%;
+    animation: colorfull-spin 2s alternate infinite;
+    position: absolute;
+}
+
+@for $i from 1 to 9 {
+    .circle:nth-child(#{$i}) {
+        animation-delay: $i * 0.1s;
+        background: $gradient;
+        background-size: 200%;
+        width: $loaderSize - $i * 20;
+        height: $loaderSize - $i * 20;
+    }
+}
+
+@keyframes colorfull-spin {
+    0% {
+        border-radius: 50%;
+        transform: rotate(0);
+        background-position: 0 50%;
+    }
+    20% {
+        border-radius: 50%;
+        transform: rotate(0);
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    90% {
+        border-radius: 5%;
+        transform: rotate(90deg);
+    }
+    100% {
+        border-radius: 5%;
+        transform: rotate(90deg);
+        background-position: 0 50%;
+    }
+}
