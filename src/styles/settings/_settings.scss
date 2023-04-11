@@ -33,8 +33,9 @@ body {
 }
 
 .container {
-    max-width: $maxWidthContainer + px;
+    max-width: $maxWidth + px;
     margin: 0px auto;
+    overflow-x: hidden;
 }
 
 [class*='__container'] {
