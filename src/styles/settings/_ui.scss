@@ -1,4 +1,20 @@
 .section {
     min-height: 100vh;
     padding-top: $headerHeight + 10 + px;
+    // .section-title
+    &-title {
+        position: relative;
+        font-weight: 500;
+        font-size: 46px;
+        // line-height: 66px;
+        line-height: 1.2;
+
+        &::after {
+            content: '';
+            width: 45px !important;
+            height: 100% !important;
+            top: 0 !important;
+            left: -10px !important;
+        }
+    }
 }
