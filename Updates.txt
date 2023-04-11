@@ -2,3 +2,4 @@
 // Update 1.0.2 = Header finish
 // Update 1.0.3 = Hero Section finish
 // Update 1.0.3.2 = Fixed Hero Section Slider Bug
+// Update 1.0.4 = About Section finish
