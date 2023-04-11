@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { About, Contact, Header, Hero, Portfolio } from '@components/index';
+import { About, Contacts, Header, Hero, Portfolio } from '@/components/index';
 import { menuList, socialList } from '@helpers/data';
 
 export const Home: FC = () => {
@@ -9,7 +9,7 @@ export const Home: FC = () => {
             <Hero />
             <About />
             <Portfolio />
-            <Contact />
+            <Contacts />
         </div>
     );
 };
