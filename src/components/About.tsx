@@ -25,7 +25,7 @@ export const About: FC = () => {
                                     we will achieve a lot together.
                                 </div>
                                 <div className="about-cv">
-                                    <div className="about-cv__icon">
+                                    <div className="about-cv__icon icon-ellipsis">
                                         <DownloadIcon />
                                     </div>
                                     <div className="about-cv__content">
