@@ -53,19 +53,6 @@
     column-gap: 16px;
     // .about-cv__icon
     &__icon {
-        position: relative;
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: -3px;
-            right: -6px;
-            width: 19px;
-            height: 19px;
-            background: rgba($pink-10, 0.3);
-            backdrop-filter: blur(1.5px);
-            border-radius: 50%;
-        }
     }
     // .about-cv__content
     &__content {
