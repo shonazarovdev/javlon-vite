@@ -5,6 +5,7 @@ const LogoSvg = (props: React.SVGProps<SVGSVGElement>) => (
         width={186}
         height={56}
         fill="none"
+        className="logo"
         {...props}>
         <path
             fill="#fff"

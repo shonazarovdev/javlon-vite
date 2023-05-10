@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { scrollToSection } from '@helpers/helpers';
 import clsx from 'clsx';
 import { FacebookSvg, InstagramSvg, LogoSvg, TelegramSvg } from '@assets/icons';
-import { socialList } from '@/helpers/data';
+import { BlobSvg } from '@/assets/blob';
 
 interface IHeader {
     list: {
@@ -21,6 +21,7 @@ interface IHeader {
 export const Header: FC<IHeader> = ({ list, social }) => {
     const [activeSection, setActiveSection] = useState<string>('home');
     const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const [onScroll, setOnScroll] = useState<boolean>(false);
 
     type TIcons = {
         telegram: JSX.Element;
@@ -60,11 +61,24 @@ export const Header: FC<IHeader> = ({ list, social }) => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            setOnScroll(window.scrollY >= 10);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
         <header className="header">
-            <div className="header__wrapper">
+            <div className={clsx('header__wrapper', onScroll && '_active')}>
                 <div className="header__container">
-                    <div className="header__body">
+                    <div
+                        className={clsx('header__body', onScroll && '_active')}>
                         <div
                             className="header__logo logo-wrapper fadeIn"
                             onClick={pageUp}>

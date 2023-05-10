@@ -18,13 +18,18 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $pink-100;
+    background: $pink-75;
     border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: rgba($pink-100, 0.5);
+    background: rgba($pink-75, 0.5);
+}
+
+::selection {
+    background-color: $pink-75;
+    color: #ffffff;
 }
 
 .wrapper {

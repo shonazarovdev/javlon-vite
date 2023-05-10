@@ -1,6 +1,11 @@
 import React, { FC } from 'react';
 import { About, Contacts, Header, Hero, Portfolio } from '@/components/index';
-import { menuList, socialList } from '@helpers/data';
+import {
+    menuList,
+    mobile__projects,
+    projects__list,
+    socialList,
+} from '@helpers/data';
 
 export const Home: FC = () => {
     return (
@@ -8,7 +13,7 @@ export const Home: FC = () => {
             <Header list={menuList} social={socialList} />
             <Hero />
             <About />
-            <Portfolio />
+            <Portfolio list={projects__list} mobileList={mobile__projects} />
             <Contacts />
         </div>
     );
