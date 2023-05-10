@@ -13,3 +13,16 @@ export type TSocialList = NumberID & {
     icon: string
     link: string
 }
+
+export type TProjectsList = NumberID & {
+    title: string
+    description: string
+    image: string
+    unique: string
+    type: string
+}
+
+export type TMobileProjects = NumberID & {
+    image: string
+    unique: string
+}

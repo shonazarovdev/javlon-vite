@@ -12,25 +12,7 @@ export const Hero: FC = () => {
                             Hello, my name is Javlonbek <br /> I’m{' '}
                             <span>UI/UX</span> Designer
                         </div>
-                        <div className="hero-restangles">
-                            <ul className="restangles-list">
-                                {Array.apply(null, Array(120)).map(
-                                    (item, key) => (
-                                        <li
-                                            key={key}
-                                            className={clsx(
-                                                'restangles-list__item',
-                                                key % 2 === 1 && 'dark',
-                                            )}
-                                        />
-                                    ),
-                                )}
-                            </ul>
-                        </div>
                         <div className="hero-programs hero__container">
-                            <div className="hero-programs__text">
-                                The programs I use
-                            </div>
                             <ul className="programs-list">
                                 <li className="programs-list__item">
                                     <img
