@@ -96,14 +96,19 @@ export const Header: FC<IHeader> = ({ list, social }) => {
                                             key={item.id}
                                             className="menu-list__item">
                                             <p
-                                                className={clsx(
-                                                    'menu-list__link ellipse',
-                                                    activeSection ===
-                                                        item.name && '_active',
-                                                )}
+                                                className="menu-list__link"
                                                 onClick={() =>
                                                     scrollToSection(item.name)
                                                 }>
+                                                <span
+                                                    className={clsx(
+                                                        'blob',
+                                                        activeSection ==
+                                                            item.name &&
+                                                            '_active',
+                                                    )}>
+                                                    <BlobSvg type="small" />
+                                                </span>
                                                 {item.title}
                                             </p>
                                         </li>

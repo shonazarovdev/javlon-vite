@@ -7,13 +7,19 @@ import {
     SocialIcon,
     TelegramSvg,
 } from '@/assets/icons';
+import { BlobSvg } from '@/assets/blob';
 
 export const Contacts: FC = () => {
     return (
         <section id="contacts" className="section contacts">
             <div className="contacts__wrapper contacts__container">
                 <div className="contacts__body">
-                    <h2 className="section-title ellipse _active">Contacts</h2>
+                    <h2 className="section-title _active">
+                        <span className="blob _active">
+                            <BlobSvg type="large" />
+                        </span>{' '}
+                        Contacts
+                    </h2>
                     <ul className="contacts-list">
                         <li className="contacts-list__item">
                             <span className="contacts-list__icon icon-ellipsis">
