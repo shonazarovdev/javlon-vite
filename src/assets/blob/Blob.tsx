@@ -1,21 +1,21 @@
-const BlobSvg = () => (
+const BlobSvg = ({ type = 'small' }) => (
     <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 500"
-        width="100%"
+        width={type == 'small' ? '50%' : '90%'}
         id="blobSvg">
         <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop
                     offset="0%"
                     style={{
-                        stopColor: 'rgb(238, 205, 163)',
+                        stopColor: 'rgba(237, 28, 203, 0.5)',
                     }}></stop>
                 <stop
                     offset="100%"
                     style={{
-                        stopColor: 'rgb(239, 98, 159)',
+                        stopColor: 'rgba(237, 28, 203, 0.5)',
                     }}></stop>
             </linearGradient>
         </defs>

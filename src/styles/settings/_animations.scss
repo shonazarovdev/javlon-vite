@@ -5,29 +5,22 @@
     animation-timing-function: ease-in;
 }
 
-.ellipse {
-    &::after {
-        content: '';
-        transform: scale(0);
+.blob {
+    transform: scale(0);
+    @include transition();
+    @include flex(center, start);
+    position: absolute;
+    top: -7px;
+    bottom: -5px;
+    left: -15px;
+    width: 80px;
+
+    svg {
+        backdrop-filter: blur(1px);
     }
 
     &._active {
-        &::after {
-            content: '';
-            transform: scale(1);
-            transition: all 0.6s ease-out 0s;
-            position: absolute;
-            top: -6px;
-            left: -15px;
-            width: 36px;
-            height: 37px;
-            background-color: rgba($pink-100, 0.5);
-            backdrop-filter: blur(1px);
-            animation-name: ellipse;
-            animation-duration: 4s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease;
-        }
+        transform: scale(1);
     }
 }
 
@@ -56,14 +49,6 @@
     }
 }
 
-@keyframes restangles {
-    0% {
-        left: -20%;
-    }
-    100% {
-        left: -90%;
-    }
-}
 @keyframes arrow-down {
     0% {
         transform: translateY(0);

@@ -1,3 +1,4 @@
+import { BlobSvg } from '@/assets/blob';
 import { ArrowDown, Download, DownloadIcon } from '@/assets/icons';
 import React, { FC } from 'react';
 
@@ -7,7 +8,12 @@ export const About: FC = () => {
             <div className="about__wrapper">
                 <div className="about__container">
                     <div className="about__body">
-                        <h2 className="section-title ellipse _active">About</h2>
+                        <h2 className="section-title _active">
+                            <span className="blob _active">
+                                <BlobSvg type="large" />
+                            </span>{' '}
+                            About
+                        </h2>
                         <div className="about__main">
                             <div className="about__left">
                                 <h2 className="about__title">

@@ -5,6 +5,7 @@
 // Update 1.0.4 = About Section finish
 // Update 1.0.5 = Contact Section finish
 // Update 1.0.6 = Changes:
-// Header New Design
-// Hero new design
-// Projects Section finish
+    // Header New Design
+    // Hero new design
+    // Projects Section finish
+// Update 1.0.6.2 = New Blob

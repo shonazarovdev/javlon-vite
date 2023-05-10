@@ -1,3 +1,4 @@
+import { BlobSvg } from '@/assets/blob';
 import clsx from 'clsx';
 import { FC } from 'react';
 
@@ -34,7 +35,10 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                 </div>
                 <div className="portfolio__header">
                     <div className="portfolio__container">
-                        <h2 className="section-title ellipse _active">
+                        <h2 className="section-title _active">
+                            <span className="blob _active">
+                                <BlobSvg type="large" />
+                            </span>{' '}
                             Portfolio
                         </h2>
                         <h2 className="portfolio__title">Let me show You...</h2>
