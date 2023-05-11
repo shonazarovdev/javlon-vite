@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { motion } from 'framer-motion';
 import {
     EmailIcon,
     FacebookSvg,
@@ -8,20 +9,35 @@ import {
     TelegramSvg,
 } from '@/assets/icons';
 import { BlobSvg } from '@/assets/blob';
+import * as A from '@helpers/animations';
 
 export const Contacts: FC = () => {
     return (
-        <section id="contacts" className="section contacts">
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            id="contacts"
+            className="section contacts">
             <div className="contacts__wrapper contacts__container">
                 <div className="contacts__body">
-                    <h2 className="section-title _active">
+                    <motion.h2
+                        variants={A.section__title}
+                        className="section-title _active">
                         <span className="blob _active">
                             <BlobSvg type="large" />
                         </span>{' '}
                         Contacts
-                    </h2>
-                    <ul className="contacts-list">
-                        <li className="contacts-list__item">
+                    </motion.h2>
+                    <motion.ul
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ amount: 0.2, once: true }}
+                        className="contacts-list">
+                        <motion.li
+                            custom={1}
+                            variants={A.contact__list}
+                            className="contacts-list__item">
                             <span className="contacts-list__icon icon-ellipsis">
                                 <PhoneIcon />
                             </span>
@@ -46,8 +62,11 @@ export const Contacts: FC = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                        <li className="contacts-list__item">
+                        </motion.li>
+                        <motion.li
+                            custom={2}
+                            variants={A.contact__list}
+                            className="contacts-list__item">
                             <span className="contacts-list__icon icon-ellipsis">
                                 <EmailIcon />
                             </span>
@@ -59,8 +78,11 @@ export const Contacts: FC = () => {
                                     javlanbay@gmail.com
                                 </a>
                             </div>
-                        </li>
-                        <li className="contacts-list__item">
+                        </motion.li>
+                        <motion.li
+                            custom={3}
+                            variants={A.contact__list}
+                            className="contacts-list__item">
                             <span className="contacts-list__icon icon-ellipsis">
                                 <SocialIcon />
                             </span>
@@ -86,10 +108,10 @@ export const Contacts: FC = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </li>
-                    </ul>
+                        </motion.li>
+                    </motion.ul>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };

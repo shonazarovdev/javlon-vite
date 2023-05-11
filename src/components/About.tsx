@@ -1,25 +1,44 @@
+import { FC } from 'react';
+import { motion } from 'framer-motion';
 import { BlobSvg } from '@/assets/blob';
 import { ArrowDown, Download, DownloadIcon } from '@/assets/icons';
-import React, { FC } from 'react';
+import * as A from '@helpers/animations';
 
 export const About: FC = () => {
     return (
-        <section id="about" className="section about">
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            id="about"
+            className="section about">
             <div className="about__wrapper">
                 <div className="about__container">
                     <div className="about__body">
-                        <h2 className="section-title _active">
+                        <motion.h2
+                            variants={A.section__title}
+                            className="section-title _active">
                             <span className="blob _active">
                                 <BlobSvg type="large" />
                             </span>{' '}
                             About
-                        </h2>
-                        <div className="about__main">
+                        </motion.h2>
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="about__main">
                             <div className="about__left">
-                                <h2 className="about__title">
+                                <motion.h2
+                                    custom={1}
+                                    variants={A.about__text}
+                                    className="about__title">
                                     Hello everyone!
-                                </h2>
-                                <div className="about__text">
+                                </motion.h2>
+                                <motion.p
+                                    custom={2}
+                                    variants={A.about__text}
+                                    className="about__text">
                                     My name is Javlonbek, I am 21 years old and
                                     I am from Uzbekistan, I have been doing
                                     UI/UX design for years, During this time I
@@ -29,8 +48,11 @@ export const About: FC = () => {
                                     for a long time I am working, I can say that
                                     this is my first IT company and I hope that
                                     we will achieve a lot together.
-                                </div>
-                                <div className="about-cv">
+                                </motion.p>
+                                <motion.div
+                                    custom={3}
+                                    variants={A.about__text}
+                                    className="about-cv">
                                     <div className="about-cv__icon icon-ellipsis">
                                         <DownloadIcon />
                                     </div>
@@ -45,18 +67,24 @@ export const About: FC = () => {
                                             </span>
                                         </a>
                                     </div>
-                                </div>
+                                </motion.div>
                             </div>
-                            <div className="about__right">
-                                <div className="about-image__wrapper">
+                            <motion.div
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ amount: 0.7, once: true }}
+                                className="about__right">
+                                <motion.div
+                                    variants={A.about__image}
+                                    className="about-image__wrapper">
                                     <img
                                         src="/images/about_img.png"
                                         alt="about-img"
                                         className="about-image"
                                     />
-                                </div>
-                            </div>
-                        </div>
+                                </motion.div>
+                            </motion.div>
+                        </motion.div>
                         <div className="about__bottom">
                             <div className="mouse-wrapper">
                                 <div className="mouse"></div>
@@ -68,6 +96,6 @@ export const About: FC = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 };
