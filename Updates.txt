@@ -9,3 +9,4 @@
     // Hero new design
     // Projects Section finish
 // Update 1.0.6.2 = New Blob
+// Update 1.0.7 = Add Motion Animation

@@ -280,6 +280,7 @@
                 height: 100%;
                 z-index: 2;
                 background: rgba(52, 52, 52, 0.3);
+                @include transition(0.3, ease, background);
             }
 
             // .box__image.web

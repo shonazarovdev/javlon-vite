@@ -23,12 +23,7 @@
     &__body {
         @include flex(center, none);
         padding-block: 5px;
-        min-height: $headerHeight + px;
-        @include transition(0.3, ease, min-height);
-
-        &._active {
-            min-height: calc($headerHeight - 40) + px;
-        }
+        min-height: calc($headerHeight - 40) + px;
     }
     // .header__logo
     &__logo {

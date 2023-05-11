@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { About, Contacts, Header, Hero, Portfolio } from '@/components/index';
 import {
     menuList,
@@ -8,13 +8,33 @@ import {
 } from '@helpers/data';
 
 export const Home: FC = () => {
+    const [scroll, setScroll] = useState(0);
+    const block = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScroll(window.pageYOffset);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <div className="container">
-            <Header list={menuList} social={socialList} />
-            <Hero />
-            <About />
-            <Portfolio list={projects__list} mobileList={mobile__projects} />
-            <Contacts />
-        </div>
+        <>
+            <div className="container">
+                <Header list={menuList} social={socialList} />
+                <Hero />
+                <About />
+                <Portfolio
+                    list={projects__list}
+                    mobileList={mobile__projects}
+                />
+                <Contacts />
+            </div>
+        </>
     );
 };
