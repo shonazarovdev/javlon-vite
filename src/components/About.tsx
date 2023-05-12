@@ -60,7 +60,10 @@ export const About: FC = () => {
                                         <h2 className="about-cv__title">
                                             My CV link
                                         </h2>
-                                        <a href="#" className="about-cv__link">
+                                        <a
+                                            href="/pdf/Resume.pdf"
+                                            download="resume.pdf"
+                                            className="about-cv__link">
                                             Download{' '}
                                             <span>
                                                 <Download />

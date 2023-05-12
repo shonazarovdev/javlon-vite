@@ -62,6 +62,15 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                             className="portfolio__title">
                             Let me show You...
                         </motion.h2>
+                        <motion.div
+                            variants={A.portfolio__image}
+                            className="portfolio__image">
+                            <img
+                                src="/images/bag.png"
+                                alt="bag_img"
+                                className="bag"
+                            />
+                        </motion.div>
                     </div>
                 </motion.div>
                 <motion.div

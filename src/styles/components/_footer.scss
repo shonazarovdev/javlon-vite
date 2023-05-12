@@ -1,0 +1,117 @@
+.footer {
+    overflow: hidden;
+    background: #202020;
+    // .footer__wrapper
+    &__wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    // .footer__container
+    &__container {
+    }
+    // .footer__body
+    &__body {
+    }
+    // .footer__top
+    &__top {
+        @include flex(center, space-between);
+        padding-block: 60px 40px;
+    }
+    // .footer__logo
+    &__logo {
+    }
+    // .footer__bottom
+    &__bottom {
+        @include flex(center, end);
+        padding-block: 25px 40px;
+        position: relative;
+    }
+    // .footer__text
+    &__text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 23px;
+        color: #4b4b4b;
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -70%);
+    }
+}
+.ellipse {
+    width: 205px;
+    height: 150px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+    }
+}
+.footer-list {
+    @include flex(center, space-between);
+    column-gap: 60px;
+    // .footer-list__item
+    &__item {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 23px;
+        color: $white-100;
+    }
+    // .footer-list__link
+    &__link {
+        cursor: pointer;
+    }
+}
+.footer-programs {
+    // .footer-programs__list
+    &__list {
+        @include flex(center, space-between);
+    }
+    // .footer-programs__item
+    &__item {
+        position: relative;
+        width: 55px;
+        height: 55px;
+
+        &::after {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+.developer {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 23px;
+    color: #ffffff;
+    // .developer-link
+    &-link {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 26px;
+        color: #4b4b4b;
+        @include transition(0.3, ease, color);
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $pink-100;
+            }
+        }
+    }
+}

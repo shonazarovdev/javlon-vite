@@ -31,6 +31,13 @@
     animation-timing-function: ease-in-out;
 }
 
+.bag {
+    animation-name: bag-image;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
 @keyframes fade {
     from {
         opacity: 0;
@@ -55,6 +62,18 @@
     }
     50% {
         transform: translateY(7px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bag-image {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(12px);
     }
     100% {
         transform: translateY(0);
