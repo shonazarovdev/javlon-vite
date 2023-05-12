@@ -67,6 +67,17 @@ const portfolio__line = {
     }
 }
 
+const portfolio__image = {
+    hidden: {
+        y: 100,
+        opacity: 0
+    },
+    visible: {
+        y: 0,
+        opacity: 1
+    }
+}
+
 const projects__grid = {
     hidden: {
         y: 150,
@@ -127,6 +138,30 @@ const contact__list = {
     })
 }
 
+const contact__image = {
+    hidden: {
+        y: 100,
+        opacity: 0
+    },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: { delay: 0.2 }
+    }
+}
+
+const footer__animation = {
+    hidden: {
+        y: 100,
+        opacity: 0
+    },
+    visible: (custom: number = 1) => ({
+        y: 0,
+        opacity: 1,
+        transition: { delay: custom * 0.2 }
+    })
+}
+
 export {
     hero__header,
     hero__programs,
@@ -134,9 +169,12 @@ export {
     about__text,
     about__image,
     portfolio__line,
+    portfolio__image,
     projects__grid,
     project__box,
     mobile__header,
     mobile__projects,
-    contact__list
+    contact__list,
+    contact__image,
+    footer__animation
 }

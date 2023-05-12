@@ -1,5 +1,12 @@
 import { FC, useEffect, useRef, useState } from 'react';
-import { About, Contacts, Header, Hero, Portfolio } from '@/components/index';
+import {
+    About,
+    Contacts,
+    Footer,
+    Header,
+    Hero,
+    Portfolio,
+} from '@/components/index';
 import {
     menuList,
     mobile__projects,
@@ -34,6 +41,7 @@ export const Home: FC = () => {
                     mobileList={mobile__projects}
                 />
                 <Contacts />
+                <Footer list={menuList} />
             </div>
         </>
     );
