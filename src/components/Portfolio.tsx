@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { BlobSvg } from '@/assets/blob';
@@ -22,32 +22,49 @@ interface IPortfolio {
 }
 
 export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
+    const block = useRef<HTMLDivElement>(null);
+    const [blockHeight, setBlockHeight] = useState<number>(0);
+
+    useEffect(() => {
+        setBlockHeight(
+            block.current?.offsetHeight !== undefined
+                ? block.current?.offsetHeight
+                : 0,
+        );
+    }, []);
+
     return (
         <motion.section
             initial="hidden"
             whileInView="visible"
             viewport={{ amount: 0.2, once: true }}
             id="portfolio"
+            ref={block}
             className="section portfolio">
             <div className="portfolio__wrapper">
-                <motion.div
-                    variants={A.portfolio__line}
-                    className="portfolio__side side-line">
-                    <div className="bullet__wrapper">
-                        <span className="bullet"></span>
-                        <p className="bullet__title">start{'>'}</p>
-                    </div>
-                    <div className="scroll-mouse">
-                        <div className="mouse"></div>
-                        <div className="scroll-mouse__title">scroll</div>
-                    </div>
-                </motion.div>
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ amount: 0.2, once: true }}
                     className="portfolio__header">
                     <div className="portfolio__container">
+                        <motion.div
+                            variants={A.portfolio__line}
+                            className="portfolio__side side-line"
+                            style={{
+                                height: blockHeight,
+                            }}>
+                            <div className="bullet__wrapper">
+                                <span className="bullet"></span>
+                                <p className="bullet__title">start{'>'}</p>
+                            </div>
+                            <div className="scroll-mouse">
+                                <div className="mouse"></div>
+                                <div className="scroll-mouse__title">
+                                    scroll
+                                </div>
+                            </div>
+                        </motion.div>
                         <motion.h2
                             variants={A.section__title}
                             className="section-title _active">

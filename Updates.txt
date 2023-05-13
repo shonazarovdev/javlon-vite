@@ -12,3 +12,4 @@
 // Update 1.0.7 = Add Motion Animation
 // Update 1.1.0 = New Design Update
 // Update 1.1.1 = New Design Finish
+// Update 1.1.1.1 = Side line bug fixed

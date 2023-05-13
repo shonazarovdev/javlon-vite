@@ -75,7 +75,7 @@ export const About: FC = () => {
                             <motion.div
                                 initial="hidden"
                                 whileInView="visible"
-                                viewport={{ amount: 0.7, once: true }}
+                                viewport={{ amount: 0.8, once: true }}
                                 className="about__right">
                                 <motion.div
                                     variants={A.about__image}
