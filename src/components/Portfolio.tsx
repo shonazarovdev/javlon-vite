@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef, useState } from 'react';
+import { FC, ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { BlobSvg } from '@/assets/blob';
@@ -22,15 +22,54 @@ interface IPortfolio {
 }
 
 export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
-    const block = useRef<HTMLDivElement>(null);
-    const [blockHeight, setBlockHeight] = useState<number>(0);
+    const [hover, setHover] = useState<boolean>(false);
+    const sideLineBlock = useRef<HTMLDivElement>(null);
+    const [sideLineHeight, setSideLineHeight] = useState<number>(0);
 
     useEffect(() => {
-        setBlockHeight(
-            block.current?.offsetHeight !== undefined
-                ? block.current?.offsetHeight
+        setSideLineHeight(
+            sideLineBlock.current?.offsetHeight !== undefined
+                ? sideLineBlock.current?.offsetHeight
                 : 0,
         );
+    }, []);
+
+    useEffect(() => {
+        const boxes: NodeListOf<Element> =
+            document.querySelectorAll('.project__box');
+
+        boxes.forEach((box: Element) => {
+            (box as HTMLElement).addEventListener(
+                'mousemove',
+                (e: MouseEvent) => {
+                    // Get position pointer in width (px)
+                    const positionPx =
+                        e.clientX -
+                        (box as HTMLDivElement).getBoundingClientRect().left;
+                    // Convert to %
+                    const positionX =
+                        (positionPx / (box as HTMLElement).offsetWidth) * 100;
+                    // Get position pointer in height (px)
+                    const positionPy =
+                        e.clientY -
+                        (box as HTMLElement).getBoundingClientRect().top;
+                    // Convert to %
+                    const positionY =
+                        (positionPy / (box as HTMLElement).offsetHeight) * 100;
+
+                    (box as HTMLElement).style.transform = `rotateX(${
+                        0.8 * (50 - positionY)
+                    }deg) rotateY(${
+                        0.8 * -(50 - positionX)
+                    }deg) scale3d(1.05, 1.05, 1.05 )`;
+                },
+            );
+            (box as HTMLElement).addEventListener('mouseout', () => {
+                (
+                    box as HTMLElement
+                ).style.transform = `rotateX(0deg) rotateY(0deg)`;
+            });
+        });
     }, []);
 
     return (
@@ -39,7 +78,7 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
             whileInView="visible"
             viewport={{ amount: 0.2, once: true }}
             id="portfolio"
-            ref={block}
+            ref={sideLineBlock}
             className="section portfolio">
             <div className="portfolio__wrapper">
                 <motion.div
@@ -52,7 +91,7 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                             variants={A.portfolio__line}
                             className="portfolio__side side-line"
                             style={{
-                                height: blockHeight,
+                                height: sideLineHeight,
                             }}>
                             <div className="bullet__wrapper">
                                 <span className="bullet"></span>
@@ -121,39 +160,42 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                                     <div
                                         className="projects-grid__item box"
                                         key={item.id}>
-                                        <motion.div
-                                            initial="hidden"
-                                            whileInView="visible"
-                                            viewport={{
-                                                amount: 0.9,
-                                                once: true,
-                                            }}>
+                                        <div
+                                            className={clsx(
+                                                'project__wrapper',
+                                                item.unique,
+                                            )}>
                                             <motion.div
-                                                custom={item.id * 0.2}
-                                                variants={A.project__box}>
-                                                <div className={item.unique}>
-                                                    <div
-                                                        className={clsx(
-                                                            'box__image',
-                                                            item.type,
-                                                        )}>
-                                                        <img
-                                                            src={item.image}
-                                                            alt={
-                                                                'project__' +
-                                                                item.id
-                                                            }
-                                                        />
-                                                    </div>
-                                                    <h3 className="box__title">
-                                                        {item.title}
-                                                    </h3>
-                                                    <p className="box__description">
-                                                        {item.description}
-                                                    </p>
+                                                initial="hidden"
+                                                whileInView="visible"
+                                                custom={item.id * 0.5}
+                                                viewport={{
+                                                    amount: 0.1,
+                                                    once: true,
+                                                }}
+                                                variants={A.project__box}
+                                                className="project__box">
+                                                <div
+                                                    className={clsx(
+                                                        'box__image',
+                                                        item.type,
+                                                    )}>
+                                                    <img
+                                                        src={item.image}
+                                                        alt={
+                                                            'project__' +
+                                                            item.id
+                                                        }
+                                                    />
                                                 </div>
+                                                <h3 className="box__title">
+                                                    {item.title}
+                                                </h3>
+                                                <p className="box__description">
+                                                    {item.description}
+                                                </p>
                                             </motion.div>
-                                        </motion.div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
