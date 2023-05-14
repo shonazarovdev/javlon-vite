@@ -29,22 +29,15 @@ export const socialList: TSocialList[] = [
         name: 'instagram',
         title: 'Instagram',
         icon: 'InstagramSvg',
-        link: ''
+        link: 'https://instagram.com/jon1__x?igshid=MzRlODBiNWFlZA=='
     },
     {
         id: 2,
         name: 'telegram',
         title: 'Telegram',
         icon: 'TelegramSvg',
-        link: ''
-    },
-    {
-        id: 3,
-        name: 'facebook',
-        title: 'Facebook',
-        icon: 'FacebookSvg',
-        link: ''
-    },
+        link: 'https://t.me/somediieyoung'
+    }
 ]
 
 export const projects__list: TProjectsList[] = [

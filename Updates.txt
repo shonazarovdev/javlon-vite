@@ -13,3 +13,4 @@
 // Update 1.1.0 = New Design Update
 // Update 1.1.1 = New Design Finish
 // Update 1.1.1.1 = Side line bug fixed
+// Update 1.1.1.2 = Project card 3d hover
