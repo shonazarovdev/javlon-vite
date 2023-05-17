@@ -19,6 +19,12 @@
         width: 450px;
         height: 450px;
 
+        @media (max-width: #{$md3 + px}) {
+            @include adaptiveValue('width', 450, 200);
+            @include adaptiveValue('height', 450, 200);
+            @include adaptiveValue('top', 0, 90);
+        }
+
         img {
             width: 100%;
             height: 100%;
@@ -28,6 +34,10 @@
     // .portfolio__header
     &__header {
         min-height: 500px;
+
+        @media (max-width: #{$md3 + px}) {
+            @include adaptiveValue('min-height', 500, 300);
+        }
     }
     // .portfolio__title
     &__title {
@@ -36,6 +46,14 @@
         font-weight: 500;
         font-size: 32px;
         line-height: 46px;
+        z-index: 6;
+        overflow: hidden;
+        position: relative;
+
+        @media (max-width: #{$md3 + px}) {
+            @include adaptiveValue('font-size', 32, 22);
+            @include adaptiveValue('line-height', 46, 36);
+        }
     }
     // .portfolio__projects
     &__projects {
@@ -44,18 +62,30 @@
 .side-line {
     position: absolute;
     top: -60px;
-    left: -4px;
+    @include adaptiveValue('top', -60, -10);
+    @include adaptiveValue('left', -2, 35);
     bottom: 0;
     width: 2px;
-    height: 100%;
     background: rgba($pink-75, 0.5);
     box-shadow: 0px 0px 10px rgba($pink-75, 0.5);
-    z-index: 10;
+    z-index: 0;
+    cursor: default;
+
+    @media (min-width: #{$md1 + px}) {
+        height: 100%;
+    }
+    @media (max-width: #{$md1 + px}) {
+    }
 }
 .bullet__wrapper {
     margin-top: 250px;
     text-transform: uppercase;
     position: relative;
+
+    @media (max-width: #{$md3 + px}) {
+        @include adaptiveValue('margin-top', 250, 130);
+    }
+
     // .bullet
     & .bullet {
         background-color: $bodyBackground;
@@ -83,6 +113,10 @@
 .scroll-mouse {
     position: absolute;
     top: 420px;
+
+    @media (max-width: #{$md3 + px}) {
+        display: none;
+    }
     // .mouse
     & .mouse {
         height: 24px;
@@ -131,15 +165,13 @@
     &-header {
         position: relative;
         @include flex(center, space-between);
-        // .projects-header__text
-        &__text {
-        }
 
         & .header-text {
             margin-top: 5px;
+            @include adaptiveValue('margin-left', 0, 40);
             font-weight: 500;
-            font-size: 26px;
-            line-height: 38px;
+            @include adaptiveValue('font-size', 26, 20);
+            @include adaptiveValue('line-height', 38, 25);
             color: $black-50;
         }
         // .projects-header__title
@@ -151,136 +183,245 @@
             font-size: 128px;
             line-height: 185px;
             color: #3c2a3f;
-            z-index: 5;
+            z-index: 4;
+            user-select: none;
+            @media (min-width: #{$md3 + px}) {
+                @include adaptiveValue('font-size', 128, 60);
+                @include adaptiveValue('top', -20, -120);
+            }
+            @media (max-width: #{$md3 + px}) {
+                display: none;
+            }
         }
     }
 
     & .bullet__wrapper {
         margin-top: 0;
         & .bullet {
-            left: -29px;
+            @include adaptiveValue('left', -25, 11);
         }
         & .bullet__title {
             margin-left: 0;
+            @include adaptiveValue('margin-left', 0, 40);
         }
     }
 }
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin-bottom: 480px;
+    @media (min-width: #{$md1 + px}) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-bottom: 480px;
+    }
+    @media (max-width: #{$md1 + px}) and (min-width: #{$md3 + px}) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        @include adaptiveValue('margin-top', 25, 20);
+        @include adaptiveValue('margin-bottom', 170, 50);
+    }
+    @media (max-width: #{$md3 + px}) {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+        @include adaptiveValue('margin-top', 30, 20);
+        @include adaptiveValue('margin-bottom', 90, 50);
+    }
     // .projects-grid__item
     &__item {
         align-self: center;
         justify-self: center;
-
+        @include flex();
         // grid item logic
-        .pro_1 {
+        & .pro_1 {
             position: relative;
-            transform: translate(-13%, -18%);
-            z-index: 11;
-
-            .box__image {
-                width: 468px;
-                height: 197px;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-13%, -18%);
             }
 
-            .box__title,
-            .box__description {
-                transform: translateX(55px);
-            }
-        }
-        .pro_2 {
-            position: relative;
-            transform: translate(-2%, 65%);
-
-            .box__image {
-                width: 461px;
-                height: 242px;
-            }
-        }
-        .pro_3 {
-            position: relative;
-            transform: translate(-11%, 35%);
-
-            .box__image {
-                width: 187px;
-                height: 445px;
-            }
-        }
-        .pro_4 {
-            position: relative;
-            transform: translate(-21%, -33%);
-            z-index: 11;
-
-            .box__image {
-                width: 415px;
-                height: 295px;
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 468px;
+                    height: 197px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 468, 260);
+                        @include adaptiveValue('height', 197, 125);
+                    }
+                }
             }
 
-            .box__title,
-            .box__description {
-                transform: translateX(55px);
-            }
-        }
-        .pro_5 {
-            position: relative;
-            transform: translate(-55%, 37%);
-
-            .box__image {
-                width: 227px;
-                height: 464px;
-            }
-        }
-        .pro_6 {
-            position: relative;
-            transform: translate(-15%, 56%);
-
-            .box__image {
-                width: 415px;
-                height: 294px;
-
-                &::after {
-                    content: none;
+            & .box__title,
+            & .box__description {
+                @media (min-width: #{$md1 + px}) {
+                    transform: translateX(55px);
                 }
             }
         }
-        .pro_7 {
+        & .pro_2 {
             position: relative;
-            transform: translate(-21%, -31%);
-            z-index: 11;
-
-            .box__image {
-                width: 414px;
-                height: 200px;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-2%, 65%);
             }
 
-            .box__title,
-            .box__description {
-                transform: translateX(55px);
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 461px;
+                    height: 242px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 461, 260);
+                    }
+                }
             }
         }
-        .pro_8 {
+        & .pro_3 {
             position: relative;
-            transform: translate(-55%, 100%);
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-11%, 35%);
+            }
 
-            .box__image {
-                width: 415px;
-                height: 295px;
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 187px;
+                    height: 445px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 250, 130);
+                    }
+                }
+            }
+        }
+        & .pro_4 {
+            position: relative;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-21%, -33%);
+                z-index: 11;
+            }
+
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 415px;
+                    height: 295px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 415, 260);
+                    }
+                }
+            }
+
+            & .box__title,
+            & .box__description {
+                @media (min-width: #{$md1 + px}) {
+                    transform: translateX(55px);
+                }
+            }
+        }
+        & .pro_5 {
+            position: relative;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-55%, 37%);
+            }
+
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 227px;
+                    height: 464px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 250, 130);
+                    }
+                }
+            }
+        }
+        & .pro_6 {
+            position: relative;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-15%, 56%);
+            }
+
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 415px;
+                    height: 294px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 415, 260);
+                    }
+                }
+            }
+        }
+        & .pro_7 {
+            position: relative;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-21%, -31%);
+                z-index: 11;
+            }
+
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 414px;
+                    height: 200px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 414, 260);
+                    }
+                }
+            }
+
+            & .box__title,
+            & .box__description {
+                @media (min-width: #{$md1 + px}) {
+                    transform: translateX(55px);
+                }
+            }
+        }
+        & .pro_8 {
+            position: relative;
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-55%, 100%);
+            }
+
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 415px;
+                    height: 295px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 415, 260);
+                    }
+                }
             }
         }
         .pro_9 {
             position: relative;
-            transform: translate(-15%, 67%);
+            @media (min-width: #{$md1 + px}) {
+                transform: translate(-15%, 67%);
+            }
 
-            .box__image {
-                width: 414px;
-                height: 250px;
+            & .box__image {
+                @media (min-width: #{$md1 + px}) {
+                    width: 414px;
+                    height: 250px;
+                }
+                @media (max-width: #{$md1 + px}) {
+                    img {
+                        @include adaptiveValue('width', 414, 260);
+                    }
+                }
             }
         }
     }
     // .box
     & .box {
+        z-index: 6;
         // .box__image
         &__image {
             border-radius: 12px;
@@ -349,24 +490,47 @@
     margin-top: 3.5rem;
     padding-bottom: 65px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    @include adaptiveValue('row-gap', 32, 26);
+    @media (min-width: #{$md2 + px}) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @media (max-width: #{$md2 + px}) and (min-width: #{$md3 + px}) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: #{$md3 + px}) and (min-width: #{$md4 + px}) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: #{$md4 + px}) {
+        grid-template-columns: repeat(1, 1fr);
+    }
     // .projects-grid__item
     &__item {
         align-self: flex-end;
         justify-self: center;
 
-        .mob_1 {
-            width: 210px;
-            height: 469px;
+        & .mob_1 {
+            @media (min-width: #{$md3 + px}) {
+                width: 210px;
+                height: 469px;
+            }
+            @media (max-width: #{$md3 + px}) {
+                @include adaptiveValue('width', 210, 190);
+            }
         }
-        .mob_2 {
-            width: 217px;
-            height: 473px;
+        & .mob_2 {
+            @media (min-width: #{$md3 + px}) {
+                width: 217px;
+                height: 473px;
+            }
+            @media (max-width: #{$md3 + px}) {
+                @include adaptiveValue('width', 210, 190);
+            }
         }
     }
 
     & .box {
         position: relative;
+        z-index: 6;
         // .box__image
         &__image {
             position: relative;

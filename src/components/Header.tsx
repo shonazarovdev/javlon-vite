@@ -36,7 +36,22 @@ export const Header: FC<IHeader> = ({ list, social }) => {
     };
 
     const handleOpenMenu = () => {
-        setOpenMenu(!openMenu);
+        window.document.body.style.overflow = 'hidden';
+        window.document.body.style.height = '100vh';
+        setOpenMenu(true);
+    };
+
+    const handleCloseMenu = () => {
+        window.document.body.style.removeProperty('overflow');
+        window.document.body.style.removeProperty('height');
+        setOpenMenu(false);
+    };
+
+    const handleMenuLink = (name: string) => {
+        window.document.body.style.removeProperty('overflow');
+        window.document.body.style.removeProperty('height');
+        scrollToSection(name);
+        setOpenMenu(false);
     };
 
     const pageUp = () => {
@@ -77,8 +92,7 @@ export const Header: FC<IHeader> = ({ list, social }) => {
         <header className="header">
             <div className={clsx('header__wrapper', onScroll && '_active')}>
                 <div className="header__container">
-                    <div
-                        className={clsx('header__body', onScroll && '_active')}>
+                    <div className="header__body">
                         <div
                             className="header__logo logo-wrapper fadeIn"
                             onClick={pageUp}>
@@ -98,7 +112,7 @@ export const Header: FC<IHeader> = ({ list, social }) => {
                                             <p
                                                 className="menu-list__link"
                                                 onClick={() =>
-                                                    scrollToSection(item.name)
+                                                    handleMenuLink(item.name)
                                                 }>
                                                 <span
                                                     className={clsx(
@@ -137,7 +151,9 @@ export const Header: FC<IHeader> = ({ list, social }) => {
                                 'menu__icon icon-menu',
                                 openMenu && '_active',
                             )}
-                            onClick={handleOpenMenu}>
+                            onClick={
+                                openMenu ? handleCloseMenu : handleOpenMenu
+                            }>
                             <span></span>
                             <span></span>
                             <span></span>

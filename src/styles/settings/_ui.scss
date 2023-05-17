@@ -1,13 +1,16 @@
 .section {
     min-height: 100vh;
-    padding-top: $headerHeight + 10 + px;
+    @include adaptiveValue(
+        'padding-top',
+        ($headerHeight + 10),
+        ($headerHeight - 60 + 25)
+    );
     // .section-title
     &-title {
         position: relative;
         font-weight: 500;
-        font-size: 46px;
-        // line-height: 66px;
-        line-height: 1.2;
+        @include adaptiveValue('font-size', 46, 36);
+        @include adaptiveValue('line-height', 66, 44);
 
         &::after {
             content: '';
