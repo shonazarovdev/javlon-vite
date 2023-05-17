@@ -78,18 +78,6 @@ const portfolio__image = {
     }
 }
 
-const projects__grid = {
-    hidden: {
-        y: 150,
-        opacity: 0
-    },
-    visible: (custom: number) => ({
-        y: 0,
-        opacity: 1,
-        transition: { delay: custom * 0.1 }
-    })
-}
-
 const project__box = {
     hidden: {
         x: -100,
@@ -102,7 +90,7 @@ const project__box = {
     })
 }
 
-const mobile__header = {
+const projects_header = {
     hidden: {
         y: 100,
         opacity: 0
@@ -170,9 +158,8 @@ export {
     about__image,
     portfolio__line,
     portfolio__image,
-    projects__grid,
     project__box,
-    mobile__header,
+    projects_header,
     mobile__projects,
     contact__list,
     contact__image,

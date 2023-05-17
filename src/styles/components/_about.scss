@@ -11,8 +11,15 @@
     }
     // .about__main
     &__main {
-        margin-top: 90px;
-        @include flex(center, space-between);
+        @include adaptiveValue('margin-top', 90, 35);
+        @media (min-width: #{$md3 + px}) {
+            @include flex(center, space-between);
+            @include adaptiveValue('column-gap', 80, 64);
+        }
+        @media (max-width: #{$md3 + px}) {
+            @include flex(center, center, column);
+            @include adaptiveValue('row-gap', 80, 48);
+        }
     }
     // .about__left
     &__left {
@@ -20,17 +27,22 @@
     }
     // .about__right
     &__right {
-        flex: 0 1 40%;
-        @include flex(center, end);
+        @media (min-width: #{$md3 + px}) {
+            flex: 0 1 40%;
+            @include flex(center, end);
+        }
+        @media (max-width: #{$md3 + px}) {
+            @include flex();
+        }
     }
     // .about__title
     &__title {
         font-weight: 600;
-        font-size: 46px;
-        line-height: 66px;
         color: $pink-75;
         text-shadow: 0px 0px 20px rgba($pink-25, 0.8);
         margin-bottom: 10px;
+        @include adaptiveValue('font-size', 46, 35);
+        @include adaptiveValue('line-height', 66, 44);
     }
     // .about__text
     &__text {
@@ -78,12 +90,21 @@
 }
 .about-image__wrapper {
     position: relative;
-    width: 296px;
-    height: 296px;
+
+    @media (min-width: #{$md3 + px}) {
+        width: 296px;
+        height: 296px;
+    }
     // .about-image
     .about-image {
-        width: 100%;
-        height: 100%;
         object-fit: cover;
+        @media (min-width: #{$md3 + px}) {
+            width: 100%;
+            height: 100%;
+        }
+        @media (max-width: #{$md3 + px}) {
+            @include adaptiveValue('width', 296, 220);
+            @include adaptiveValue('height', 296, 220);
+        }
     }
 }

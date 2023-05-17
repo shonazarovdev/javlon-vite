@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import { BlobSvg } from '@/assets/blob';
 import * as A from '@helpers/animations';
+import { ProjectsHeader } from './ProjectsHeader';
+import useWindowSize from '@/hooks/useWindowSize';
 
 interface IPortfolio {
     list: {
@@ -22,15 +24,12 @@ interface IPortfolio {
 }
 
 export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
-    const [hover, setHover] = useState<boolean>(false);
-    const sideLineBlock = useRef<HTMLDivElement>(null);
-    const [sideLineHeight, setSideLineHeight] = useState<number>(0);
+    const [sideLineHeight, setSideLineHeight] = useState<number | undefined>(0);
+    const { width } = useWindowSize();
 
     useEffect(() => {
         setSideLineHeight(
-            sideLineBlock.current?.offsetHeight !== undefined
-                ? sideLineBlock.current?.offsetHeight
-                : 0,
+            window.document.querySelector('.portfolio')?.clientHeight,
         );
     }, []);
 
@@ -58,9 +57,9 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                         (positionPy / (box as HTMLElement).offsetHeight) * 100;
 
                     (box as HTMLElement).style.transform = `rotateX(${
-                        0.8 * (50 - positionY)
+                        0.5 * (50 - positionY)
                     }deg) rotateY(${
-                        0.8 * -(50 - positionX)
+                        0.5 * -(50 - positionX)
                     }deg) scale3d(1.05, 1.05, 1.05 )`;
                 },
             );
@@ -78,7 +77,6 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
             whileInView="visible"
             viewport={{ amount: 0.2, once: true }}
             id="portfolio"
-            ref={sideLineBlock}
             className="section portfolio">
             <div className="portfolio__wrapper">
                 <motion.div
@@ -91,7 +89,7 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                             variants={A.portfolio__line}
                             className="portfolio__side side-line"
                             style={{
-                                height: sideLineHeight,
+                                minHeight: sideLineHeight,
                             }}>
                             <div className="bullet__wrapper">
                                 <span className="bullet"></span>
@@ -133,28 +131,14 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
-                    custom={0}
-                    variants={A.projects__grid}
                     className="portfolio__projects projects">
-                    <motion.div
-                        custom={2}
-                        variants={A.projects__grid}
-                        className="projects__container">
+                    <div className="projects__container">
                         <div className="projects__body">
-                            <div className="projects-header">
-                                <div className="projects-header__text">
-                                    <div className="bullet__wrapper">
-                                        <span className="bullet"></span>
-                                        <p className="bullet__title">
-                                            work{'>'}
-                                        </p>
-                                    </div>
-                                    <h3 className="header-text">
-                                        WEB DESIGN PROJECTS
-                                    </h3>
-                                </div>
-                                <h2 className="projects-header__title">WEB</h2>
-                            </div>
+                            <ProjectsHeader
+                                title="WEB DESIGN PROJECTS"
+                                bullet="work"
+                                header="WEB"
+                            />
                             <div className="projects-grid">
                                 {list.map((item) => (
                                     <div
@@ -174,7 +158,11 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                                                     once: true,
                                                 }}
                                                 variants={A.project__box}
-                                                className="project__box">
+                                                className={clsx(
+                                                    width && width <= 769
+                                                        ? ''
+                                                        : 'project__box',
+                                                )}>
                                                 <div
                                                     className={clsx(
                                                         'box__image',
@@ -199,41 +187,20 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                                     </div>
                                 ))}
                             </div>
-                            <motion.div
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ amount: 0.2, once: true }}
-                                className="projects-header">
-                                <div className="projects-header__text">
-                                    <motion.div
-                                        custom={1}
-                                        variants={A.mobile__header}
-                                        className="bullet__wrapper">
-                                        <span className="bullet"></span>
-                                        <p className="bullet__title">
-                                            work{'>'}
-                                        </p>
-                                    </motion.div>
-                                    <motion.h3
-                                        custom={2}
-                                        variants={A.mobile__header}
-                                        className="header-text">
-                                        MOBILE APP DESIGN PROJECTS
-                                    </motion.h3>
-                                </div>
-                                <motion.h2
-                                    custom={2.1}
-                                    variants={A.mobile__header}
-                                    className="projects-header__title">
-                                    MOBILE
-                                </motion.h2>
-                            </motion.div>
+                            <ProjectsHeader
+                                title="MOBILE APP DESIGN PROJECTS"
+                                bullet="work"
+                                header="MOBILE"
+                            />
                             <div className="mobile-grid">
                                 {mobileList.map((item) => (
                                     <motion.div
                                         initial="hidden"
                                         whileInView="visible"
-                                        viewport={{ amount: 0.2, once: true }}
+                                        viewport={{
+                                            amount: 0.2,
+                                            once: true,
+                                        }}
                                         className="mobile-grid__item box"
                                         key={item.id}>
                                         <motion.div
@@ -252,7 +219,7 @@ export const Portfolio: FC<IPortfolio> = ({ list, mobileList }) => {
                                 ))}
                             </div>
                         </div>
-                    </motion.div>
+                    </div>
                 </motion.div>
             </div>
         </motion.section>

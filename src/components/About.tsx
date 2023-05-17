@@ -3,8 +3,17 @@ import { motion } from 'framer-motion';
 import { BlobSvg } from '@/assets/blob';
 import { ArrowDown, Download, DownloadIcon } from '@/assets/icons';
 import * as A from '@helpers/animations';
+import useWindowSize from '@/hooks/useWindowSize';
+import { scrollToSection } from '@/helpers/helpers';
 
 export const About: FC = () => {
+    const { width } = useWindowSize();
+    const isMobile = width && width <= 768;
+
+    const handleMouseClick = (name: string) => {
+        scrollToSection(name);
+    };
+
     return (
         <motion.section
             initial="hidden"
@@ -88,14 +97,20 @@ export const About: FC = () => {
                                 </motion.div>
                             </motion.div>
                         </motion.div>
-                        <div className="about__bottom">
-                            <div className="mouse-wrapper">
-                                <div className="mouse"></div>
+                        {!isMobile && (
+                            <div className="about__bottom">
+                                <div
+                                    className="mouse-wrapper"
+                                    onClick={() =>
+                                        handleMouseClick('portfolio')
+                                    }>
+                                    <div className="mouse"></div>
+                                </div>
+                                <span className="arrow-animation">
+                                    <ArrowDown />
+                                </span>
                             </div>
-                            <span className="arrow-animation">
-                                <ArrowDown />
-                            </span>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

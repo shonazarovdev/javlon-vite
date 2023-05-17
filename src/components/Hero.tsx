@@ -2,8 +2,17 @@ import { FC } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown } from '@/assets/icons';
 import * as A from '@helpers/animations';
+import useWindowSize from '@/hooks/useWindowSize';
+import { scrollToSection } from '@/helpers/helpers';
 
 export const Hero: FC = () => {
+    const { width } = useWindowSize();
+    const isMobile = width && width <= 768;
+
+    const handleMouseClick = (name: string) => {
+        scrollToSection(name);
+    };
+
     return (
         <motion.section
             initial="hidden"
@@ -55,14 +64,18 @@ export const Hero: FC = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="hero__bottom">
-                        <div className="mouse-wrapper">
-                            <div className="mouse"></div>
+                    {!isMobile && (
+                        <div className="hero__bottom">
+                            <div
+                                className="mouse-wrapper"
+                                onClick={() => handleMouseClick('about')}>
+                                <div className="mouse"></div>
+                            </div>
+                            <span className="arrow-animation">
+                                <ArrowDown />
+                            </span>
                         </div>
-                        <span className="arrow-animation">
-                            <ArrowDown />
-                        </span>
-                    </div>
+                    )}
                 </div>
             </div>
         </motion.section>
