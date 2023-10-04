@@ -104,9 +104,9 @@ export const Footer: FC<IFooter> = ({ list }) => {
                                 className="developer">
                                 Made by:{' '}
                                 <a
-                                    href="https://github.com/MukhammadDev9"
+                                    href="https://github.com/themaverickmu"
                                     className="developer-link">
-                                    mukhammaddev
+                                    themaverickmu
                                 </a>
                             </motion.div>
                         </div>
